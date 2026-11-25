@@ -1,0 +1,14 @@
+# Optional Render blueprint (backend as Docker web service with a persistent disk).
+services:
+  - type: web
+    name: llm-chat-backend
+    runtime: docker
+    rootDir: backend
+    healthCheckPath: /health
+    disk: { name: data, mountPath: /data, sizeGB: 1 }
+    envVars:
+      - { key: LLM_API_KEYS, sync: false }
+      - { key: ALLOWED_ORIGINS, sync: false }
+      - { key: ENABLE_FAILURE_SIMULATION, value: "true" }
+      - { key: DATABASE_URL, value: "sqlite:////data/app.db" }
+      - { key: LLM_MODEL, value: "gemini/gemini-2.5-flash" }

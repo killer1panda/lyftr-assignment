@@ -1,0 +1,11 @@
+.env
+node_modules/
+dist/
+__pycache__/
+.pytest_cache/
+*.db*
+.venv/
+.DS_Store
+*.tar.gz
+*.pdf
+
